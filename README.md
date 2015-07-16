@@ -43,5 +43,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 [1]:http://mobmead.github.com/EasyMPermission/
-[2]:http://github.com/mobmead/EasyMPermission/EasyMPermissionSample/app/libs/easympermission-1.0.0.jar
+[2]:http://github.com/mobmead/EasyMPermission/tree/master/EasyMPermissionSample/app/libs/easympermission-1.0.0.jar'
 [project lombok]:http://projectlombok.org/
