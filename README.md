@@ -42,6 +42,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-[1]:http://mobmead.github.com/EasyMPermission/
+[1]:http://mobmead.github.io/EasyMPermission/
 [2]:http://github.com/mobmead/EasyMPermission/tree/master/EasyMPermissionSample/app/libs/easympermission-1.0.0.jar'
 [project lombok]:http://projectlombok.org/
