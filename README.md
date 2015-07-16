@@ -3,13 +3,13 @@ Code generator for new Android app permission model
 
 ### What is EasyMPermission
 
-EasyMPermission is based on the great [project lombok]. It creates the boilplate code to
+EasyMPermission is based on the great [project lombok]. It creates the boilerplate code to
 
 - check required permission at run-time,
 - generate permission request code,
 - generate callback function onRequestPermissionsResult.
 
-With EasyMPermission app developers don't need to change current app flow. By adding annotations to existing classes and methods EasyMPermission will generate all boilplate code for you.
+With EasyMPermission app developers don't need to change current app flow. By adding annotations to existing classes and methods EasyMPermission will generate all boilerplate code for you.
 
 For detailed infromation see this [web site] [1]
 
