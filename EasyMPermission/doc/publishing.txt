@@ -1,0 +1,15 @@
+To publish:
+
+Step #1: Change src/core/lombok/core/Version.java and pick a nice version number. Example: "0.8.1"
+
+Step #2: commit everything to the git master branch.
+
+Step #3: tag this release with the version number. (Example: v0.8.1) - note the prefix v.
+
+Step #4: git push && git push --tags
+
+Step #5: ant publish-all
+
+Step #6: Follow the instructions that flew by when the maven-publish task ran, which involves going to http://oss.sonatype.org/ and logging in with the username/pass that are in your scroll log, to test and then 'release' the staged repo to maven central. Note that once you do this there's no turning back, and that version number is forever associated with this release.
+
+Step #6: Change src/core/lombok/core/Version.java to "0.8.2-EDGE", and commit this.

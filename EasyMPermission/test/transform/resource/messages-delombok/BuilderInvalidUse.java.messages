@@ -1,0 +1,2 @@
+2 @Getter, @Setter, @Wither, @Data, @ToString, @EqualsAndHashCode, @AllArgsConstructor are not allowed on builder classes.
+13 @Value is not allowed on builder classes.
