@@ -1,4 +1,26 @@
 <!--
+ Copyright (C) 2015 Jian Chen <jian@mobmead.com>.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+-->
+
+<!--
  Copyright (C) 2010-2014 The Project Lombok Authors.
   
   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,7 +41,7 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 -->
-<project name="lombok" default="dist" xmlns:ivy="antlib:com.zwitserloot.ivyplusplus">
+<project name="easympermission" default="dist" xmlns:ivy="antlib:com.zwitserloot.ivyplusplus">
 	<description>
 This buildfile is part of projectlombok.org. It is the main entry point that contains
 the common tasks and can be called on to run the main aspects of all the sub-scripts.
@@ -129,6 +151,15 @@ the common tasks and can be called on to run the main aspects of all the sub-scr
 			output="build/version.txt" />
 		<ivy:loadversion property="lombok.version" file="build/version.txt" />
 		<echo level="info">Lombok version: ${lombok.version}</echo>
+		<!-- create EasyMPermission version -->
+		<javac includeDestClasses="false" srcdir="src/core" debug="on" destdir="build/lombok" source="1.5" target="1.5" includes="com/mobmead/easympermission/javac/Version.java" includeantruntime="false" />
+		<java
+			classname="com.mobmead.easympermission.javac.Version"
+			classpath="build/lombok"
+			failonerror="true"
+			output="build/easympermission-version.txt" />
+		<ivy:loadversion property="easympermission.version" file="build/easympermission-version.txt" />
+		<echo level="info">EasyMPermission version: ${easympermission.version}</echo>
 	</target>
 	
 	<target name="-unpackLibs" depends="ensureRuntimeDeps">
@@ -202,6 +233,7 @@ the common tasks and can be called on to run the main aspects of all the sub-scr
 			<src path="src/installer" />
 			<src path="src/eclipseAgent" />
 			<exclude name="lombok/javac/**" />
+			<exclude name="com/mobmead/easympermission/javac/**" />
 			<exclude name="**/*Transplants.java" />
 			<classpath location="build/lombok" />
 			<classpath refid="build.path" />
@@ -220,6 +252,7 @@ the common tasks and can be called on to run the main aspects of all the sub-scr
 			<src path="src/core" />
 			<src path="src/delombok" />
 			<include name="lombok/javac/**" />
+			<include name="com/mobmead/easympermission/javac/**" />
 			<include name="lombok/delombok/**" />
 			<classpath location="build/lombok" />
 			<classpath refid="build.path" />
@@ -236,7 +269,7 @@ the common tasks and can be called on to run the main aspects of all the sub-scr
 			<format property="releaseTimestamp" pattern="yyyy-MM-dd" />
 		</tstamp>
 		<echo file="release-timestamp.txt">${releaseTimestamp}</echo>
-		<zip destfile="dist/lombok-${lombok.version}.jar">
+		<zip destfile="dist/easympermission-${easympermission.version}.jar">
 			<fileset dir="build" includes="changelog.txt" />
 			<fileset dir="." includes="LICENSE" />
 			<fileset dir="." includes="AUTHORS" />
@@ -247,6 +280,7 @@ the common tasks and can be called on to run the main aspects of all the sub-scr
 				<include name="lombok/extern/**" />
 				<include name="lombok/launch/**" />
 				<include name="lombok/delombok/ant/Tasks*" />
+				<include name="com/mobmead/easympermission/*.class" />
 			</fileset>
 			<mappedresources>
 				<fileset dir="build/lombok">
@@ -256,6 +290,7 @@ the common tasks and can be called on to run the main aspects of all the sub-scr
 					<exclude name="lombok/extern/**" />
 					<exclude name="lombok/launch/**" />
 					<exclude name="lombok/delombok/ant/Tasks*" />
+					<exclude name="com/mobmead/easympermission/*.class" />
 				</fileset>
 				<firstmatchmapper>
 					<globmapper from="*.class" to="*.SCL.lombok" />
@@ -263,17 +298,18 @@ the common tasks and can be called on to run the main aspects of all the sub-scr
 				</firstmatchmapper>
 			</mappedresources>
 		</zip>
-		<jar destfile="dist/lombok-${lombok.version}.jar" update="true">
+		<jar destfile="dist/easympermission-${easympermission.version}.jar" update="true">
 			<manifest>
 				<attribute name="Premain-Class" value="lombok.launch.Agent" />
 				<attribute name="Agent-Class" value="lombok.launch.Agent" />
 				<attribute name="Can-Redefine-Classes" value="true" />
 				<attribute name="Main-Class" value="lombok.launch.Main" />
 				<attribute name="Lombok-Version" value="${lombok.version}" />
+				<attribute name="EasyMPermission-Version" value="${easympermission.version}" />
 			</manifest>
 		</jar>
 		<delete file="release-timestamp.txt" />
-		<copy file="dist/lombok-${lombok.version}.jar" tofile="dist/lombok.jar" />
+		<copy file="dist/easympermission-${easympermission.version}.jar" tofile="dist/easympermission.jar" />
 		<property name="lombok.dist.built" value="true" />
 	</target>
 	
