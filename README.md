@@ -1,6 +1,8 @@
 # EasyMPermission
 Code generator for new Android app permission model
 
+[ ![Download](https://api.bintray.com/packages/mobmead/EasyMPermission/EasyMPermission/images/download.svg) ](https://bintray.com/mobmead/EasyMPermission/EasyMPermission/_latestVersion)
+
 ### What is EasyMPermission
 
 EasyMPermission is based on the great [project lombok]. It creates the boilerplate code to
@@ -14,7 +16,9 @@ With EasyMPermission app developers don't need to change current app flow. By ad
 For detailed infromation see this [web site] [1]
 
 ### How to use EasyMPermission
-- Download [jar file][2] to libs folder
+- You can download latest jar here 
+[ ![Download](https://api.bintray.com/packages/mobmead/EasyMPermission/EasyMPermission/images/download.svg) ](https://bintray.com/mobmead/EasyMPermission/EasyMPermission/_latestVersion)
+
 - Add below lines into your gradle file's dependency section
 ```java
 provided files('libs/easympermission-1.0.0.jar')
