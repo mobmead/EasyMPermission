@@ -260,6 +260,15 @@ the common tasks and can be called on to run the main aspects of all the sub-scr
 		<mkdir dir="build/lombok/META-INF" />
 		<mkdir dir="build/lombok/META-INF/services" />
 		<echo file="build/lombok/META-INF/services/javax.annotation.processing.Processor">lombok.launch.AnnotationProcessorHider$AnnotationProcessor</echo>
+		<!-- add pom files -->
+		<mkdir dir="build/lombok/META-INF/maven" />
+		<mkdir dir="build/lombok/META-INF/maven/com.mobmead" />
+		<mkdir dir="build/lombok/META-INF/maven/com.mobmead/easympermission" />
+		<copy todir="build/lombok/META-INF/maven/com.mobmead/easympermission">
+			<fileset dir="maven">
+				<include name="**" />
+			</fileset>
+		</copy>
 	</target>
 	
 	<target name="dist" description="Builds THE lombok.jar file which contains everything." depends="version, compile">
@@ -282,6 +291,7 @@ the common tasks and can be called on to run the main aspects of all the sub-scr
 				<include name="lombok/delombok/ant/Tasks*" />
 				<include name="com/mobmead/easympermission/*.class" />
 			</fileset>
+			<fileset dir="META-INF/maven/com.mobmead/easympermission" includes="**" />
 			<mappedresources>
 				<fileset dir="build/lombok">
 					<exclude name="com/sun/tools/javac/**" />
