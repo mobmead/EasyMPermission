@@ -21,6 +21,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    provided files('libs/easympermission-1.0.0.jar')
+    provided 'com.mobmead:easympermission:1.0.0'
     provided 'org.glassfish:javax.annotation:10.0-b28'
 }
