@@ -16,12 +16,16 @@ With EasyMPermission app developers don't need to change current app flow. By ad
 For detailed infromation see this [web site] [1]
 
 ### How to use EasyMPermission
-- You can download latest jar here 
-[ ![Download](https://api.bintray.com/packages/mobmead/EasyMPermission/EasyMPermission/images/download.svg) ](https://bintray.com/mobmead/EasyMPermission/EasyMPermission/_latestVersion)
 
-- Add below lines into your gradle file's dependency section
-```java
-provided files('libs/easympermission-1.0.0.jar')
+- Add EasyMPermission repo in gradle file
+```groovy
+maven {
+    url  "http://dl.bintray.com/mobmead/EasyMPermission" 
+}
+```
+- Add below lines into your gradle file's dependencies section
+```groovy
+provided 'com.mobmead:easympermission:1.0.0'
 provided 'org.glassfish:javax.annotation:10.0-b28'
 ```
 
@@ -47,5 +51,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 [1]:http://mobmead.github.io/EasyMPermission/
-[2]:http://github.com/mobmead/EasyMPermission/tree/master/EasyMPermissionSample/app/libs/easympermission-1.0.0.jar'
 [project lombok]:http://projectlombok.org/
