@@ -191,14 +191,21 @@ public class MainActivity extends Activity {
 			<h3>How to use EasyMPermission</h3>
 			
 			<h4>Download</h4>
+
+<a href='https://bintray.com/mobmead/EasyMPermission/EasyMPermission/_latestVersion'><img src='https://api.bintray.com/packages/mobmead/EasyMPermission/EasyMPermission/images/download.svg'></a>
 			<p>The source code and sample application as well as this website is <a href='//github.com/mobmead/EasyMPermission/'>available at GitHub</a>.</p>
 			
-			<p>A pre-compiled jar is <a href='//github.com/mobmead/EasyMPermission/tree/master/EasyMPermissionSample/app/libs/easympermission-1.0.0.jar'>here</a></p>
 			
 			<h4>Android Studio (Gradle)</h4>
-			Put <b>easympermission-1.0.0.jar</b> in the <i>libs</i> folder
+			<b> Add EasyMPermission repo url</b>
 			<pre class='prettyprint'>
-provided files('libs/easympermission-1.0.0.jar')
+maven {
+    url  "http://dl.bintray.com/mobmead/EasyMPermission" 
+}
+			</pre>
+			<b>Add EasyMPermission into dependencies</b>
+			<pre class='prettyprint'>
+provided 'com.mobmead:easympermission:1.0.0'
 provided 'org.glassfish:javax.annotation:10.0-b28'
 			</pre>
 			  
