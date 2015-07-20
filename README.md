@@ -3,6 +3,8 @@ Code generator for new Android app permission model
 
 [ ![Download](https://api.bintray.com/packages/mobmead/EasyMPermission/EasyMPermission/images/download.svg) ](https://bintray.com/mobmead/EasyMPermission/EasyMPermission/_latestVersion)
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-EasyMPermission-green.svg?style=flat)](https://android-arsenal.com/details/1/2169)
+
 ### What is EasyMPermission
 
 EasyMPermission is based on the great [project lombok]. It creates the boilerplate code to
