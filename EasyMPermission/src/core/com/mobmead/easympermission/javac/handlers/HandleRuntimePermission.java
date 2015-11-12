@@ -340,7 +340,7 @@ public class HandleRuntimePermission extends JavacAnnotationHandler<RuntimePermi
         JCExpression checkMethod = JavacHandlerUtil.chainDots(typeNode, "this", IS_PERMISSION_GRANTED_METHOD);
         List<JCExpression> checkArgs = List.<JCExpression>of(treeMaker.Ident(typeNode.toName(permissionVarName)));
         JCMethodInvocation checkInvocation = treeMaker.Apply(List.<JCExpression>nil(), checkMethod, checkArgs);
-        JCExpression cmp = treeMaker.Binary(CTC_EQUAL,
+        JCExpression permissionCmp = treeMaker.Binary(CTC_EQUAL,
                 checkInvocation,
                 treeMaker.Literal(CTC_BOOLEAN, 1));
 
@@ -353,10 +353,22 @@ public class HandleRuntimePermission extends JavacAnnotationHandler<RuntimePermi
                 .last(treeMaker.Exec(requestInvocation))
                 .build();
 
-        JCIf jcIf = If(typeNode)
-                .condition(cmp)
+        JCIf jcCheckPermissionIf = If(typeNode)
+                .condition(permissionCmp)
                 .withThen(permissionAnnotatedItem.getMethod().getBody())
                 .withElse(body)
+                .build();
+        JCBlock checkPermissionBlock = Block(typeNode)
+                .last(jcCheckPermissionIf)
+                .build();
+
+        JCExpression versionCmp = treeMaker.Binary(CTC_LESS_THAN,
+                JavacHandlerUtil.chainDots(typeNode, "android", "os", "Build", "VERSION", "SDK_INT"),
+                treeMaker.Literal(CTC_INT, 23));
+        JCIf jcIf = If(typeNode)
+                .condition(versionCmp)
+                .withThen(permissionAnnotatedItem.getMethod().getBody())
+                .withElse(checkPermissionBlock)
                 .build();
 
         return Block(typeNode)

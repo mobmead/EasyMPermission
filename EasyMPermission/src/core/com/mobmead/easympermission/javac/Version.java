@@ -27,7 +27,7 @@ package com.mobmead.easympermission.javac;
  */
 public class Version {
 
-    private static final String VERSION = "1.0.0";
+    private static final String VERSION = "1.0.1";
 
     private Version() {
     }
