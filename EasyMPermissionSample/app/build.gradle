@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion "android-MNC"
+    compileSdkVersion 23
     buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "com.mobmead.android.easympermissionsample"
-        minSdkVersion 'MNC'
-        targetSdkVersion 'MNC'
+        minSdkVersion 14
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -21,6 +21,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    provided 'com.mobmead:easympermission:1.0.0'
+    provided 'com.mobmead:easympermission:1.0.1'
     provided 'org.glassfish:javax.annotation:10.0-b28'
 }
